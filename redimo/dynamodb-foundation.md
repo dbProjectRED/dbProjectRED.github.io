@@ -9,7 +9,7 @@ micro_nav: false
 # Page navigation
 page_nav:
     prev:
-        content: Intro to Redimo
+        content: Introducing Redimo
         url: /redimo/intro
     # next:
     #     content: Implementing Strings

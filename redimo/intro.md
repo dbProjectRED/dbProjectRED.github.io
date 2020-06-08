@@ -11,9 +11,9 @@ page_nav:
     prev:
         content: REDIMO
         url: /redimo/
-    # next:
-    #     content: Implementing Strings
-    #     url: '#'
+    next:
+        content: DynamoDB Foundation
+        url: /redimo/dynamodb-foundation
 
 ---
 
