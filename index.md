@@ -5,10 +5,10 @@ keywords:
 
 # Hero section
 title: dbProject.RED
-description: Bringing the Redis API to DynamoDB.
+description: Brining the ease and approachability of the Redis API to the power of DynamoDB.
 buttons:
-    - content: Button
-      url: '#'
+    - content: REDIMO
+      url: /redimo/
       external_url: false
     - icon: github
       content: GitHub
@@ -16,16 +16,16 @@ buttons:
       external_url: true
 
 # Author box
-author:
-    title: About Author
-    title_url: '#'
-    external_url: true
-    description: Author description
+# author:
+#     title: About Author
+#     title_url: '#'
+#     external_url: true
+#     description: Author description
 
 # Grid navigation
 grid_navigation:
-    - title: Grid navigation
-      excerpt: Section description
+    - title: REDIMO
+      excerpt: The Redis API implemented over DynamoDB.
       cta: Read more
-      url: '#'
+      url: /redimo/
 ---
