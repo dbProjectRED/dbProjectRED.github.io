@@ -9,11 +9,11 @@ micro_nav: false
 # Page navigation
 page_nav:
     prev:
-        content: Introducing Redimo
-        url: /redimo/intro
-    # next:
-    #     content: Implementing Strings
-    #     url: '#'
+        content: REDIMO
+        url: /redimo/
+    next:
+        content: Implementing Strings
+        url: /redimo/implementing-strings
 
 ---
 

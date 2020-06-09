@@ -25,7 +25,7 @@ buttons:
 # Grid navigation
 grid_navigation:
     - title: REDIMO
-      excerpt: The Redis API implemented over DynamoDB.
+      excerpt: The Redis API implemented over DynamoDB. Now Availalbe for Go.
       cta: Read more
       url: /redimo/
 ---

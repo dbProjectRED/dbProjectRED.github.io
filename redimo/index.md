@@ -13,6 +13,10 @@ Redimo is a set of libraries that implement the Redis API on top of DynamoDB. Th
 
 A quick primer on the DynamoDB concepts and operations used in the Redimo libraries.
 
-### Implementing Key-Values/Strings
+### [Implementing Key-Values/Strings](/redimo/implementing-strings)
 
 How to implement Redis key-value or “strings” operations in DynamoDB.
+
+### [redimo.go &rarr;](https://github.com/dbProjectRED/redimo.go)
+
+The Redimo library for Go is now available.
