@@ -1,22 +1,23 @@
 ---
 title: REDIMO
 permalink: /redimo/
-layout: default
+layout: homepage
 description: Redimo is a suite of libraries that apply the Redis API over DynamoDB. Currently available for Go.
+grid_navigation:
+    - title: Introduction
+      excerpt: Redimo is a set of libraries that implement the Redis API on top of DynamoDB. The Go library is now available in beta.
+      cta: Read more
+      url: /redimo/intro/
+    - title: DynamoDB Foundation
+      excerpt: A quick primer on the DynamoDB concepts and operations used in the Redimo libraries.
+      cta: Read more
+      url: /redimo/dynamodb-foundation/
+    - title: Implementing Key-Values/Strings
+      excerpt: How to implement Redis key-value or “strings” operations in DynamoDB.
+      cta: Read more
+      url: /redimo/implementing-strings/
+    - title: redimo.go
+      excerpt: The Redimo library for Go is now available.
+      cta: Read more
+      url: https://github.com/dbProjectRED/redimo.go
 ---
-
-### [Introducing Redimo](/redimo/intro/)
-
-Redimo is a set of libraries that implement the Redis API on top of DynamoDB. The Go library is now available in beta.
-
-### [DynamoDB Foundation](/redimo/dynamodb-foundation/)
-
-A quick primer on the DynamoDB concepts and operations used in the Redimo libraries.
-
-### [Implementing Key-Values/Strings](/redimo/implementing-strings/)
-
-How to implement Redis key-value or “strings” operations in DynamoDB.
-
-### [redimo.go &rarr;](https://github.com/dbProjectRED/redimo.go)
-
-The Redimo library for Go is now available.
