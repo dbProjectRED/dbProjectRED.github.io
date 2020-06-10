@@ -13,7 +13,7 @@ page_nav:
         url: /redimo/
     next:
         content: Implementing Strings
-        url: /redimo/implementing-strings
+        url: /redimo/implementing-strings/
 
 ---
 

@@ -13,7 +13,7 @@ page_nav:
         url: /redimo/
     next:
         content: DynamoDB Foundation
-        url: /redimo/dynamodb-foundation
+        url: /redimo/dynamodb-foundation/
 
 ---
 
