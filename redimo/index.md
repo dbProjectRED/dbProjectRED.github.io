@@ -16,6 +16,10 @@ grid_navigation:
       excerpt: How to implement Redis key-value or “strings” operations in DynamoDB.
       cta: Read more
       url: /redimo/implementing-strings/
+    - title: Implementing Sets
+      excerpt: How to implement Redis set operations in DynamoDB.
+      cta: Read more
+      url: /redimo/implementing-sets/
     - title: redimo.go
       excerpt: The Redimo library for Go is now available.
       cta: Read more
