@@ -102,3 +102,7 @@ These are really just application level computation, from the DynamoDB point of 
 ### [SINTERSTORE](https://redis.io/commands/sinterstore), [SUNIONSTORE](https://redis.io/commands/sunionstore), [SDIFFSTORE](https://redis.io/commands/sdiffstore)
 Similar to `SINTER`, `SUNION` and `SDIFF`, these are also application level executions of those operations followed by `SADD` for the resulting members. It is possible to optimise this by using [BatchWriteItem](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchWriteItem.html) but this won't tell you if the members you're inserting already exist or not, so it may or may not work for you.
 
+### [SRANDMEMBER](https://redis.io/commands/srandmember) and [SPOP](https://redis.io/commands/spop)
+The `SRANDMEMBER` fetches a random member of the set — there's no comparable operation in DynamoDB, so depending on your application you might want to just fetch the first or last member using a `Query`. It is possible to use a random number as well, stored in a secondary index. Or to add an offset to the query that skips the first random `N` members. This all depends on your application, though. 
+
+`SPOP` is pretty much the same as `SRANDMEMBER`, except that it also deletes the member from the set, for which we use `SREM`.
