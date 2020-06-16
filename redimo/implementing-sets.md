@@ -106,3 +106,34 @@ Similar to `SINTER`, `SUNION` and `SDIFF`, these are also application level exec
 The `SRANDMEMBER` fetches a random member of the set — there's no comparable operation in DynamoDB, so depending on your application you might want to just fetch the first or last member using a `Query`. It is possible to use a random number as well, stored in a secondary index. Or to add an offset to the query that skips the first random `N` members. This all depends on your application, though. 
 
 `SPOP` is pretty much the same as `SRANDMEMBER`, except that it also deletes the member from the set, for which we use `SREM`.
+
+### [SMOVE](https://redis.io/commands/smove) source destination member
+This is an interesting and mildly complex operation. This is because the operation is transactional — the member must be removed from the source set and put into the destination set in an single atomic operation, because we don't want a situation where our first `SREM`-like operation on the source set succeeds but the second `SADD`-like operation on the destination set fails. We also need to do this operation only if the members actually exists at the source set — if it doesn't we need to very deliberately do nothing. 
+
+To pull this off, we'll use the [`TransactWriteItems`](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_TransactWriteItems.html) operation. This operation takes multiple write operations to perform atomically, along with a condition check. We can then express our operation as 
+
+* check if member exists at *source* — this is a `Condition`
+* remove from *source* — this is a `Delete`
+* add to *destination* — this is a `Put`
+
+Here's the API structure we can use:
+
+```yaml
+# TransactWriteItems
+TransactItems:
+  Delete:
+    ConditionExpression: attribute_exists(pk)
+    Key:
+      pk:
+        S: sourceKey
+      sk:
+        S: member
+  Put:
+    Item:
+      pk:
+        S: destinationKey
+      sk:
+        S: member
+```
+
+The `ConditionExpression: attribute_exists(pk)` is the check to make sure the member exists on the source set. In this case it doesn't actually matter which attribute we check for existence on, so the `pk` works fine. 
