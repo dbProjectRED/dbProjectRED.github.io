@@ -23,5 +23,6 @@ grid_navigation:
     - title: redimo.go
       excerpt: The Redimo library for Go is now available.
       cta: Read more
+      external_url: true
       url: https://github.com/dbProjectRED/redimo.go
 ---

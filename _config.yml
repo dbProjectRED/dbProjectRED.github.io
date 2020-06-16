@@ -1,6 +1,5 @@
 # Theme settings
 doks:
-    baseurl: https://dbproject.red
     color_theme: red
     header:
         logo:
