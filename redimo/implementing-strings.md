@@ -11,9 +11,9 @@ page_nav:
     prev:
         content: REDIMO
         url: /redimo/
-    # next:
-    #     content: Implementing Strings
-    #     url: '#'
+    next:
+        content: Implementing Sets
+        url: /redimo/implementing-sets
 
 ---
     
@@ -21,7 +21,9 @@ The Strings operations are the foundation of the Redis API, and are the simplest
 
 Because `GET`, `SET`, `INCR` and their variants operate on just a key (with no sub-fields, members or elements), we technically only need to use the `pk` for them. Since we've decided to use a compound key for our table (we need sk for the other data structures) we'll just use a constant default sk value for all of these operations – something like `'/'`, `'–'` or `'.'` will do. We'll store our value in an attribute named `val`.
 
-We'll use YAML in the examples to concisely specify the important parts of the request, and leave out the boilerplate options like the table name, etc. You can add these in or use your language's SDK to automate these options.
+We'll use YAML in the examples to concisely specify the important parts of the request, and leave out the boilerplate options like the table name, etc. You can add these in or use your language's SDK to automate these options. 
+
+**We're going to be using the operations and concepts referred to in the [DynamoDB Foundation](/redimo/dynamodb-foundation/), so please read that first.**
 
 ### [SET](https://redis.io/commands/set) key value [EX|NX]
 

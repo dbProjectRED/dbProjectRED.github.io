@@ -19,6 +19,8 @@ page_nav:
 
 The set operations from the Redis API are pretty simple to implement on DynamoDB, because having a partition and range key means we can just have the partition key as the set key, and the member itself as the range key. This gives us all the behaviour that we'd expect with a set. Repeatedly adding members will not duplicate them. The DynamoDB range is sorted, but we don't care about the sorting behaviour for the set operations anyway. 
 
+**We're going to be using the operations and concepts referred to in the [DynamoDB Foundation](/redimo/dynamodb-foundation/), so please read that first.**
+
 ### [SADD](https://redis.io/commands/sadd) key member
 Remember that we've created our DynamoDB with a string partition key `pk` and a string sort key `sk`. The first operation is `SADD` which a member into a set. We can use a `PutItem` for this, with the set key on `pk` and the member value itself on `sk` — this will give us set behaviour where we don't duplicate members and just overwrite them if they already exist.
 
@@ -94,8 +96,9 @@ ExpressionAttributeValues:
 
  This is will return the first batch of members, along with a `LastEvaluatedKey` if there are any more. If this key is present, we can make another call to query and pass it in as `ExclusiveStartKey`. We keep doing this until we no longer see the `LastEvaluatedKey`, which tells us that all the members have been fetched. It makes sense to run `Query` in a `do...while` loop similar to [`SCARD`](#scard-key).
  
- 
+### [SINTER](https://redis.io/commands/sinter), [SUNION](https://redis.io/commands/sunion), [SDIFF](https://redis.io/commands/sdiff)
+These are really just application level computation, from the DynamoDB point of view. We'll need to load each key we want to work with into application memory using `SMEMBERS` and perform the intersection, union or diff operations there. 
 
-
-
+### [SINTERSTORE](https://redis.io/commands/sinterstore), [SUNIONSTORE](https://redis.io/commands/sunionstore), [SDIFFSTORE](https://redis.io/commands/sdiffstore)
+Similar to `SINTER`, `SUNION` and `SDIFF`, these are also application level executions of those operations followed by `SADD` for the resulting members. It is possible to optimise this by using [BatchWriteItem](https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_BatchWriteItem.html) but this won't tell you if the members you're inserting already exist or not, so it may or may not work for you.
 
